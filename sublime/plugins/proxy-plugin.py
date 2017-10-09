@@ -12,7 +12,7 @@ class ProxyCommand(sublime_plugin.WindowCommand):
 	def display_list(self):
 		self.window.show_quick_panel(self.options, self.on_done)
 
-	def list_current_proxy():
+	def list_current_proxy(self):
 		print('Current Proxy...')
 		if 'HTTP_PROXY' in os.environ:
 			print('HTTP_PROXY:', os.environ['HTTP_PROXY'])
