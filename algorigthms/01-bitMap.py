@@ -1,3 +1,5 @@
+# -- encode: utf-8 --
+# 利用 bitarray 实现 BitMap
 from bitarray import bitarray
 import hashlib
 
