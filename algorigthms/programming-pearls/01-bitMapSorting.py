@@ -21,7 +21,7 @@ MAX_SIZE = 1024
 
 def generate_data (len):
 	''' 随机生成输入数据'''
-	return random.sample(range(len), len)
+	return random.sample(range(len), int(len / 2))
 
 def bit_map_sort(data):
 	bit_map = bitarray(MAX_SIZE)
@@ -40,7 +40,7 @@ def bit_map_sort(data):
 bm = bitarray(10)
 bm.setall(0)
 print(bm[0], bm[1], bm)
-data = generate_data(10)
+data = generate_data(100)
 print('Before sorting: ')
 print(data)
 print('After sorting: ')
