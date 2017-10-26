@@ -7,14 +7,15 @@ def vector_rotation(str, pos):
 	return r_str[::-1]
 
 
-def swap(str_list, begin, end):
-	''' to be continued
-	'''
-	half = int((end - begin) / 2) + begin
-	for i in range(begin, half):
-		tmp = str_list[i]
-		str_list[i] = str_list[end - begin - 1 -i]
-		str_list[end - begin - 1 - i] = tmp
+def str_reverse(str_list, begin, end):
+	mid = int((end - begin) / 2) + begin
+	loops = mid - begin
+	last = end - 1
+	for i in range(loops):
+		tmp = str_list[begin + i]
+		str_list[begin + i] = str_list[last - i]
+		str_list[last - i] = tmp
+
 
 def vector_rotation_2(str, pos):
 	''' 自己实现交换? 
@@ -26,27 +27,10 @@ def vector_rotation_2(str, pos):
 	'''
 	str_list = list(str)
 	length = len(str)
-
-	l_half = int(pos / 2)
-	for i in range(l_half):
-		tmp = str_list[i]
-		str_list[i] = str_list[pos - i - 1]
-		str_list[pos - i - 1] = tmp
-	
-	r_half = int((pos + len(str_list)) / 2)
-	for i in range(pos, r_half):
-		tmp = str_list[i]
-		str_list[i] = str_list[length - 1 - i + pos]
-		str_list[length - 1 - i + pos] = tmp
-
-	half = int(length / 2)
-	for i in range(half):
-		tmp = str_list[i]
-		str_list[i] = str_list[length - 1 - i]
-		str_list[length - 1 - i] = tmp
-
+	str_reverse(str_list, 0, pos)
+	str_reverse(str_list, pos, length)
+	str_reverse(str_list, 0, length)
 	return ''.join(str_list)
-
 
 str = 'abcdefgh'
 print(vector_rotation(str, 1))
@@ -58,9 +42,3 @@ print(vector_rotation_2(str, 1))
 print(vector_rotation_2(str, 2))
 print(vector_rotation_2(str, 3))
 print(vector_rotation_2(str, 6))
-
-l_str = list(str)
-# swap(l_str, 0, 3)
-print(l_str)
-swap(l_str, 3, 8)
-print(l_str)
